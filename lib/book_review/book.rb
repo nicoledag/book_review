@@ -1,3 +1,4 @@
+
 class BookReview::Book      
   
   attr_accessor :title, :author, :short_desc, :review_link, :age
