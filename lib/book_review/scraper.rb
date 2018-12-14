@@ -1,0 +1,2 @@
+class BookReview::Scraper
+end
