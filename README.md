@@ -1,6 +1,7 @@
 # BookReview
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/book_review`. To experiment with that code, run `bin/console` for an interactive prompt.
+
+This Ruby Gem provides a CLI to view the top 50 books that all kids should read before they are 12 years old as provided and reviewed by Comon Sense Media.
 
 TODO: Delete this and the text above, and describe your gem
 
