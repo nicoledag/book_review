@@ -1,6 +1,7 @@
+require 'pry'
 class BookReview::Review   
   
-  attr_accessor :media_review, :user_review, :user_review_link
+  attr_accessor :media_review
   
   
 @@all = []

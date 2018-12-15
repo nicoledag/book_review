@@ -34,26 +34,21 @@ end
 
   def self.scrape_review
     
-     index_page = Nokogiri::HTML(open('https://www.commonsensemedia.org/book-reviews/dont-let-the-pigeon-drive-the-bus'))
+    index_page = Nokogiri::HTML(open(review.url'))
       
-      doc = index_page.css("div.views-row")
+      doc = index_page.css("div.inner-wrapper")
       
-      doc.each do |book|
+      doc.each do |review|
         
-       attributes = {
+      attributes = {
   
-    
-        media_review: doc.css(“div.field-item.even p”).text
-    
-        user_review: doc.css("div.review-wrapper")[0].children[1].text
-    
-    
-        user_review_link:  doc.css("div.review-wrapper a").attribute("href").value
 
-       }
+        media_review: review.css("div.field-item.even p").text
+
+         }
     
         review = BookReview::Review.new(attributes)
-    
+      end
   end
   
 end

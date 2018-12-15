@@ -1,7 +1,7 @@
 
 class BookReview::Book      
   
-  attr_accessor :title, :author, :short_desc, :review_link, :age
+  attr_accessor :title, :author, :short_desc, :url, :age
   
   @@all = []
   
