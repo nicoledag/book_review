@@ -15,7 +15,7 @@ class BookReview::Scraper
         
        attributes = {
 
-        url: book.css("div.views-field.views-field-title.result-title a").attribute("href").value,
+        url: "www.commonsensemedia" << book.css("div.views-field.views-field-title.result-title a").attribute("href").value,
         title: book.css("div.views-field.views-field-title.result-title a")[0].children.text,
         author: book.css("em.field-content")[0].children.text,
         
