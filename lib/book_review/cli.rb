@@ -30,10 +30,10 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
     puts "Would you like to see the review?"  
     puts "Enter the book number that you would like to see the review?"
     
-    #scrape all the reviews - call on the scraper class.
-    BookReview::Scraper.scrape_review
+    # #scrape all the reviews - call on the scraper class.
+    # BookReview::Scraper.scrape_review
     
-    review_method
+    # review_method
     
     puts "Do you want more informaton on any other books.  Type Y/N"
     
@@ -64,7 +64,7 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
       puts "Book title:           #{book.title}"
       puts "Recommended Age:      #{book.age}"
       puts "Author:               #{book.author}"
-      puts "Review Link:          #{book.review_link}"
+      puts "Review Link:          #{book.url}"
       puts "Short Description:    #{book.short_desc}"    #need to clean up scraping white space.
       
     elsif input == "exit"  #stops method.
@@ -91,7 +91,7 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
   #     puts "Book Title: #{book.title}"
   #     puts "Recommended Age:  #{book.age}"
   #     puts "Author:  #{book.author}"
-  #     puts "Review Link:  #{book.review_link}"
+  #     puts "Review Link:  #{book.url}"
   #     puts "Short Description:  #{book.short_desc}"
   #   end
   #   end
@@ -99,12 +99,12 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
   # end
   
   
-  def review_method
+  # def review_method
     
-     BookReview::Review.all.collect { |review| puts "#{review.media_review}." }
+  #   BookReview::Review.all.collect { |review| puts "#{review.media_review}." }
      
     
-  end
+  # end
   
   
   

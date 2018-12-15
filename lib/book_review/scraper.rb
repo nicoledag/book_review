@@ -15,7 +15,7 @@ class BookReview::Scraper
         
        attributes = {
 
-        review_link: book.css("div.views-field.views-field-title.result-title a").attribute("href").value,
+        url: book.css("div.views-field.views-field-title.result-title a").attribute("href").value,
         title: book.css("div.views-field.views-field-title.result-title a")[0].children.text,
         author: book.css("em.field-content")[0].children.text,
         
@@ -32,23 +32,23 @@ class BookReview::Scraper
 end
 
 
-  def self.scrape_review
+  # def self.scrape_review
     
-    index_page = Nokogiri::HTML(open(review.url'))
+  #   index_page = Nokogiri::HTML(open(book.url))
       
-      doc = index_page.css("div.inner-wrapper")
+  #     review_page = index_page.css("div.inner-wrapper")
       
-      doc.each do |review|
+  #     review_page.each do |review|
         
-      attributes = {
+  #     attributes = {
   
 
-        media_review: review.css("div.field-item.even p").text
+  #       media_review: review.css("div.field-item.even p").text
 
-         }
+  #       }
     
-        review = BookReview::Review.new(attributes)
-      end
-  end
+  #       review = BookReview::Review.new(attributes)
+  #     end
+  # end
   
 end
