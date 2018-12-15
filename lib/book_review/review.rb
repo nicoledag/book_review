@@ -1,11 +1,12 @@
 require 'pry'
 class BookReview::Review   
   
-  attr_accessor :media_review
+  attr_accessor :review, :book
   
   
 @@all = []
-  
+
+
   def initialize(att_hash)
     att_hash.each do |key, value|
       self.send("#{key}=", value)

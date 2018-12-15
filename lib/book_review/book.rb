@@ -1,13 +1,15 @@
 
 class BookReview::Book      
   
-  attr_accessor :title, :author, :short_desc, :url, :age
+  attr_accessor :title, :author, :short_desc, :url, :age, :review
   
   @@all = []
   
+
   def initialize(att_hash)
     att_hash.each do |key, value|
       self.send("#{key}=", value)
+      @review = []
     end
     self.save
   end

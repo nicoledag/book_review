@@ -18,30 +18,12 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
     puts "Please select a book you want more info about by choosing a number 1-50"
     
     get_book
-    
-    
-    # puts "Would you like to see books by age range?"
-    # puts "select (Preschoolers) for ages 2-4, (Little kids) for ages 5-7, (Big kids)" 
-    # puts "for ages 8-9 and (Tweens) for ages 10-12."
-    
-    # books_by_age_range
-    
-    
-    puts "Would you like to see the review?"  
-    puts "Enter the book number that you would like to see the review?"
-    
-    # #scrape all the reviews - call on the scraper class.
-    # BookReview::Scraper.scrape_review
-    
-    # review_method
-    
-    puts "Do you want more informaton on any other books.  Type Y/N"
-    
+   
+    # review_method(book)
+  
     
     
   end
-  
-  
   
   
   
@@ -57,6 +39,7 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
     index = input.to_i - 1  #converting user input to an integer and subracting 1 to get the index
     
     if index.between?(0, 49)
+      
       book = list_books[index]  #I am passing the index to the list_books method.
       
       puts ""
@@ -66,6 +49,7 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
       puts "Author:               #{book.author}"
       puts "Review Link:          #{book.url}"
       puts "Short Description:    #{book.short_desc}"    #need to clean up scraping white space.
+      puts " #{book.review}"
       
     elsif input == "exit"  #stops method.
     
@@ -75,36 +59,25 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
     end
     
   end
-  
-  # def books_by_age_range
-    
-  #   # binding.pry
-    
-  #   input = gets.strip
-    
-  #   if input.include?("Preschoolers")
-    
-   
-  #     BookReview::Book.all.collect do |book| 
-      
 
-  #     puts "Book Title: #{book.title}"
-  #     puts "Recommended Age:  #{book.age}"
-  #     puts "Author:  #{book.author}"
-  #     puts "Review Link:  #{book.url}"
-  #     puts "Short Description:  #{book.short_desc}"
-  #   end
-  #   end
-    
-  # end
   
   
-  # def review_method
+  def review_method(book)
+  
+    puts "Do you want more info (Y/N)?"
     
-  #   BookReview::Review.all.collect { |review| puts "#{review.media_review}." }
-     
+    input = "nil"  #default value
     
-  # end
+    until input == "Y" || input == "N"
+      input = gets.strip.upcase
+    end
+    if input == "y"
+      BookReview::Scraper.scrape_review(book)
+      
+    else
+      puts "Goodbye!"
+    end
+  end
   
   
   
