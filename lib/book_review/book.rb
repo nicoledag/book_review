@@ -9,7 +9,6 @@ class BookReview::Book
   def initialize(att_hash)
     att_hash.each do |key, value|
       self.send("#{key}=", value)
-      @review = []
     end
     self.save
   end

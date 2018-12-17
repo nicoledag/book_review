@@ -1,4 +1,5 @@
 require 'pry'
+require 'colorize'
 
 class BookReview::CLI        #name spacing so it doesn't get confused with soemthing else similiar to it.
   
@@ -7,20 +8,23 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
     puts "Here are the top 50 books that all kids should read before they are 12 years old:"
     puts ""
     
-    #scrape all the books - call on the scraper class.
-    BookReview::Scraper.scrape_book
+  
     
-    list_books
+    BookReview::Scraper.scrape_book     #scrape all the books - call on the scraper class.
     
-    #Is there a way to wrap text?
+     list_books
+  
     puts ""
     puts "Would you like more information about each book?"  
     puts "Please select a book you want more info about by choosing a number 1-50"
     
     get_book
    
+
     # review_method(book)
   
+  
+  BookReview::Scraper.scrape_review
     
     
   end
@@ -33,6 +37,22 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
     end
   end
   
+   
+      
+  # def list_books_preschool
+    
+  #   input = gets.strip
+  #   if input == "preschool"
+    
+  #   BookReview::Book.all[1, 10].each.with_index(1) do |book,index|
+  #     puts "#{index}: #{book.title}"
+  
+  #   end
+  #   end
+  # end
+  
+ 
+  
   
   def get_book
     input = gets.strip
@@ -43,13 +63,13 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
       book = list_books[index]  #I am passing the index to the list_books method.
       
       puts ""
-      puts "-------------------------------------------------"
-      puts "Book title:           #{book.title}"
-      puts "Recommended Age:      #{book.age}"
-      puts "Author:               #{book.author}"
-      puts "Review Link:          #{book.url}"
-      puts "Short Description:    #{book.short_desc}"    #need to clean up scraping white space.
-      puts " #{book.review}"
+      puts "-------------------------------------------------".colorize(:red)
+      puts "Book title:".colorize(:light_blue) + "        #{book.title}"
+      puts "Recommended Age:".colorize(:light_blue) + "   #{book.age}"
+      puts "Author:".colorize(:light_blue) + "            #{book.author}"
+      puts "Review Link:".colorize(:light_blue) + "       #{book.url}"
+      puts "Short Description:".colorize(:light_blue) + " #{book.short_desc}"   
+      puts "Book Review:".colorize(:light_blue) + "       #{book.review}"    #Should book review go in separate class?
       
     elsif input == "exit"  #stops method.
     
@@ -61,7 +81,7 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
   end
 
   
-  
+
   def review_method(book)
   
     puts "Do you want more info (Y/N)?"
@@ -73,6 +93,8 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
     end
     if input == "y"
       BookReview::Scraper.scrape_review(book)
+   
+
       
     else
       puts "Goodbye!"
