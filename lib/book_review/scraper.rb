@@ -56,7 +56,7 @@ end
         
         attributes[:any_good] = doc.css("div.field.field-name-field-any-good.field-type-text-long.field-label-hidden p").text
 
-        attributes[:families_can_talk_about] = doc.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-family-topics p").text
+        attributes[:families_can_talk_about] = doc.css("div.field.field-name-field-family-topics.field-type-text-long.field-label-hidden p").text
 
 
         # attributes[:what_parents_need_to_know] = doc.css("div.field-item.even p")[0].children.text
