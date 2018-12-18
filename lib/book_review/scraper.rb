@@ -38,17 +38,26 @@ end
 
       doc.each do |review|
 
-      attributes = {}
+        attributes = {
 
+       story: review.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-what-is-story p").text,
 
-        attributes[:story] = review.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-what-is-story p").text
+       parents_need_to_know: review.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-parents-need-to-know p").text,
 
-        attributes[:parents_need_to_know] = review.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-parents-need-to-know p").text
+       any_good: review.css("div.field.field-name-field-any-good.field-type-text-long.field-label-hidden p").text,
 
-        attributes[:any_good] = review.css("div.field.field-name-field-any-good.field-type-text-long.field-label-hidden p").text
+       family_topics: review.css("div.field.field-name-field-family-topics.field-type-text-long.field-label-hidden p").text,
 
-        attributes[:family_topics] = review.css("div.field.field-name-field-family-topics.field-type-text-long.field-label-hidden p").text
+     }
 
+        # attributes[:story] = review.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-what-is-story p").text
+        #
+        # attributes[:parents_need_to_know] = review.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-parents-need-to-know p").text
+        #
+        # attributes[:any_good] = review.css("div.field.field-name-field-any-good.field-type-text-long.field-label-hidden p").text
+        #
+        # attributes[:family_topics] = review.css("div.field.field-name-field-family-topics.field-type-text-long.field-label-hidden p").text
+        #
 
         review = BookReview::Review.new(attributes)
 
