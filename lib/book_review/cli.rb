@@ -26,7 +26,7 @@ attr_accessor :book
     BookReview::Scraper.scrape_review(book)
 
 
-    # review_method(book)
+    review_method(book)
 
 
   end
@@ -47,7 +47,9 @@ attr_accessor :book
 
     if index.between?(0, 49)
 
-      book = list_books[index]  #I am passing the index to the list_books method.
+      @book = list_books[index]  #I am passing the index to the list_books method.
+
+      #needed a instance variable so it could be read in other methods.
 
       puts ""
       puts "-------------------------------------------------".colorize(:red)
@@ -56,6 +58,7 @@ attr_accessor :book
       puts "Author:".colorize(:light_blue) + "            #{book.author}"
       puts "Review Link:".colorize(:light_blue) + "       #{book.url}"
       puts "Short Description:".colorize(:light_blue) + " #{book.short_desc}"
+
 
     elsif input == "exit"  #stops method.
 
@@ -70,6 +73,7 @@ attr_accessor :book
 
   def review_method(book)
 
+
     puts "Do you want more info (Y/N)?"
 
     input = "nil"  #default value
@@ -79,6 +83,8 @@ attr_accessor :book
     end
     if input == "y"
       BookReview::Scraper.scrape_review(book)
+
+
 
 
     else

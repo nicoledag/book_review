@@ -9,7 +9,6 @@ class BookReview::Book
 
 
   def initialize(att_hash)
-    # binding.pry
     att_hash.each { |key, value|  self.send("#{key}=", value) }   #Mass Assignment
     @reviews = []
     self.save
