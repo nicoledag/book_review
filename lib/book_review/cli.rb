@@ -1,8 +1,10 @@
 require 'pry'
 require 'colorize'
 
-
 class BookReview::CLI        #name spacing so it doesn't get confused with soemthing else similiar to it.
+
+attr_accessor :book
+
 
   def start
     puts "Welcome to the Children's Book Review App!"
