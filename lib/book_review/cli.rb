@@ -13,7 +13,7 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
 
     BookReview::Scraper.scrape_book     #scrape all the books - call on the scraper class.
 
-     list_books
+    list_books
 
     puts ""
     puts "Would you like more information about each book?"

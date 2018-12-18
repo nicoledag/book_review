@@ -7,7 +7,6 @@ class BookReview::Review
 
 @@all = []
 
-
   def initialize(att_hash, book = nil)
     att_hash.each { |key, value| self.send("#{key}=", value) }
     self.book = book
@@ -19,6 +18,7 @@ class BookReview::Review
       @book = book
       book.add_review(self)
     end
+  end
 
 
   def save
@@ -30,5 +30,5 @@ class BookReview::Review
     @@all
   end
 
-end
+
 end
