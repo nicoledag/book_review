@@ -1,9 +1,9 @@
 require 'pry'
-class BookReview::Review   
-  
-  attr_accessor :story, :any_good, :what_parents_need_to_know, :families_can_talk_about
- 
-  
+class BookReview::Review
+
+  attr_accessor :story, :any_good, :parents_need_to_know, :family_topics
+
+
 @@all = []
 
 
@@ -13,15 +13,15 @@ class BookReview::Review
     end
     self.save
   end
-  
+
   def save
     @@all << self
     self
   end
-  
+
   def self.all
     @@all
   end
-  
-  
+
+
 end
