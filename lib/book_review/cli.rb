@@ -26,7 +26,10 @@ attr_accessor :book
     BookReview::Scraper.scrape_review(book)
 
 
-    review_method(book)
+    # review_method(book)
+
+    BookReview::Scraper.scrape_review(book)
+
 
 
   end
@@ -72,8 +75,6 @@ attr_accessor :book
 
 
   def review_method(book)
-
-
     puts "Do you want more info (Y/N)?"
 
     input = "nil"  #default value
