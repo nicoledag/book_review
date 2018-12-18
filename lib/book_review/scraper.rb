@@ -4,18 +4,13 @@ require 'open-uri'
 
 class BookReview::Scraper
 
-
   def self.scrape_book
 
      index_page = Nokogiri::HTML(open('https://commonsensemedia.org/lists/50-books-all-kids-should-read-before-theyre-12'))
 
-
-
       doc = index_page.css("div.views-row")
 
       doc.each do |book|
-
-
 
        attributes = {
 
@@ -37,39 +32,28 @@ end
 
     review_page = Nokogiri::HTML(open(book.url))
 
-
-
       doc = review_page.css("div.panel-content-mid-main.panel-panel")
 
       # binding.pry
 
-
-      # doc.each do |review|
-
+      doc.each do |review|
 
       attributes = {}
 
 
-        attributes[:story] = doc.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-what-is-story p").text
+        attributes[:story] = review.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-what-is-story p").text
 
-        attributes[:parents_need_to_know] = doc.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-parents-need-to-know p").text
+        attributes[:parents_need_to_know] = review.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-parents-need-to-know p").text
 
-        attributes[:any_good] = doc.css("div.field.field-name-field-any-good.field-type-text-long.field-label-hidden p").text
+        attributes[:any_good] = review.css("div.field.field-name-field-any-good.field-type-text-long.field-label-hidden p").text
 
-        attributes[:family_topics] = doc.css("div.field.field-name-field-family-topics.field-type-text-long.field-label-hidden p").text
+        attributes[:family_topics] = review.css("div.field.field-name-field-family-topics.field-type-text-long.field-label-hidden p").text
 
-
-        # attributes[:what_parents_need_to_know] = doc.css("div.field-item.even p")[0].children.text
-        # attributes[:story] = doc.css("div.field-item.even p")[1].children.text
-        # attributes[:any_good] = doc.css("div.field-item.even p")[3,4].children.text
-        # attributes[:families_can_talk_about] = doc.css("div.field-item.even p")[5].children.text
-
-        attributes
 
         review = BookReview::Review.new(attributes)
 
       end
-  # end
+  end
 
 
 

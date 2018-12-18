@@ -21,9 +21,10 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
 
     get_book
 
+    BookReview::Scraper.scrape_review(book)
 
-    review_method(book)
 
+    # review_method(book)
 
 
   end
@@ -77,7 +78,6 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
     end
     if input == "y"
       BookReview::Scraper.scrape_review(book)
-
 
 
     else

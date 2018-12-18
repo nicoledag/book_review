@@ -9,14 +9,13 @@ class BookReview::Review
 
 
   def initialize(att_hash, book = nil)
-    att_hash.each { |key, value|
-      self.send("#{key}=", value) }
+    att_hash.each { |key, value| self.send("#{key}=", value) }
     self.book = book
     self.save
   end
 
   def book=(book)
-    if book != book
+    if book != nil
       @book = book
       book.add_review(self)
     end
@@ -31,5 +30,5 @@ class BookReview::Review
     @@all
   end
 
-
+end
 end

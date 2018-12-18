@@ -1,3 +1,4 @@
+require 'pry'
 
 class BookReview::Book
 
@@ -8,10 +9,9 @@ class BookReview::Book
 
 
   def initialize(att_hash)
-    att_hash.each do |key, value|
-      self.send("#{key}=", value)
-      @review = []
-    end
+    # binding.pry
+    att_hash.each { |key, value|  self.send("#{key}=", value) }
+    @review = []
     self.save
   end
 
@@ -31,6 +31,7 @@ class BookReview::Book
     #adds the review to the current book's 'review' array.
     #does not add the review if the already exists.
   end
+
 
 
 
