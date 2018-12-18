@@ -54,7 +54,6 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
       puts "Author:".colorize(:light_blue) + "            #{book.author}"
       puts "Review Link:".colorize(:light_blue) + "       #{book.url}"
       puts "Short Description:".colorize(:light_blue) + " #{book.short_desc}"
-      puts "Book Review:".colorize(:light_blue) + "       #{book.review}"    #Should book review go in separate class?
 
     elsif input == "exit"  #stops method.
 
