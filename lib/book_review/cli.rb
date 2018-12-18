@@ -22,10 +22,8 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
     get_book
 
 
-    # review_method(book)
+    review_method(book)
 
-
-  BookReview::Scraper.scrape_review
 
 
   end
@@ -37,21 +35,6 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
       puts "#{index}: #{book.title}"
     end
   end
-
-
-
-  # def list_books_preschool
-
-  #   input = gets.strip
-  #   if input == "preschool"
-
-  #   BookReview::Book.all[1, 10].each.with_index(1) do |book,index|
-  #     puts "#{index}: #{book.title}"
-
-  #   end
-  #   end
-  # end
-
 
 
 

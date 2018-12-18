@@ -33,15 +33,15 @@ class BookReview::Scraper
 end
 
 
-  def self.scrape_review
+  def self.scrape_review(book)
 
-    review_page = Nokogiri::HTML(open('https://commonsensemedia.org/book-reviews/tales-of-a-fourth-grade-nothing'))
+    review_page = Nokogiri::HTML(open(book.url))
 
 
 
       doc = review_page.css("div.panel-content-mid-main.panel-panel")
 
-      binding.pry
+      # binding.pry
 
 
       # doc.each do |review|
@@ -64,6 +64,7 @@ end
         # attributes[:any_good] = doc.css("div.field-item.even p")[3,4].children.text
         # attributes[:families_can_talk_about] = doc.css("div.field-item.even p")[5].children.text
 
+        attributes
 
         review = BookReview::Review.new(attributes)
 

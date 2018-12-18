@@ -2,17 +2,25 @@ require 'pry'
 class BookReview::Review
 
   attr_accessor :story, :any_good, :parents_need_to_know, :family_topics
+  attr_reader :book
 
 
 @@all = []
 
 
-  def initialize(att_hash)
-    att_hash.each do |key, value|
-      self.send("#{key}=", value)
-    end
+  def initialize(att_hash, book = nil)
+    att_hash.each { |key, value|
+      self.send("#{key}=", value) }
+    self.book = book
     self.save
   end
+
+  def book=(book)
+    if book != book
+      @book = book
+      book.add_review(self)
+    end
+
 
   def save
     @@all << self
