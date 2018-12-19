@@ -21,8 +21,6 @@ attr_accessor :book
     get_book
 
     more_info(book)
-    #
-    # list_review
 
   end
 
@@ -80,6 +78,18 @@ attr_accessor :book
     if input == "Y" || input == "YES"
       puts "... fetching the reviews \n\n"
       BookReview::Scraper.scrape_review(book)
+
+      book.reviews.each do |review|
+        puts "The Story:".colorize(:light_blue)
+        puts "#{review.story}"
+        puts "Any Good?:".colorize(:light_blue)
+        puts "#{review.any_good}"
+        puts "What Parents Need to Know:".colorize(:light_blue)
+        puts "#{review.parents_need_to_know}"
+        puts "Family Topics:".colorize(:light_blue)
+        puts "#{review.family_topics}"
+      end
+
     else
       puts "Goodbye!"
     end

@@ -51,8 +51,6 @@ end
 
         book.add_review(review)
 
-  binding.pry
-
       end
   end
 
