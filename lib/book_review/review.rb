@@ -8,12 +8,14 @@ class BookReview::Review
 
   @@all = []
 
-  def initialize(att_hash)
+  def initialize(att_hash, book = nil)
     att_hash.each { |key, value| self.send("#{key}=", value) }
+    self.artist = artist
     self.save
   end
 
-  def book=(book)  #need to re-look at adding to book class
+  def book=(book)  
+      if book!=nil
       @book = book
       book.add_review(self)
   end
