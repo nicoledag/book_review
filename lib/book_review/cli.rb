@@ -21,8 +21,8 @@ attr_accessor :book
     get_book
 
     more_info(book)
-
-    list_review
+    #
+    # list_review
 
   end
 
@@ -53,12 +53,14 @@ attr_accessor :book
       puts "Review Link:".colorize(:light_blue) + "       #{book.url}"
       puts "Short Description:".colorize(:light_blue) + " #{book.short_desc}"
 
+      more_info(book)
+
 
     elsif input == "exit"  #stops method.
 
     else
       puts "Sorry, I didn't understand"
-      get_book  #recursion.  Allows method to start over.
+      get_book
     end
 
   end
@@ -68,24 +70,19 @@ attr_accessor :book
   def more_info(book)
     puts "Do you want more info (Y/N)?"
 
-    input = "nil"  #default value
+    input = gets.strip.upcase
 
-    until input == "Y" || input == "N"
+    until ["Y","N","YES","NO"].include?(input)
+      puts "Please type Y or N"
       input = gets.strip.upcase
     end
 
-    if input == "y"
+    if input == "Y" || input == "YES"
+      puts "... fetching the reviews \n\n"
       BookReview::Scraper.scrape_review(book)
     else
       puts "Goodbye!"
     end
   end
-
-
-  def list_review
-
-
-  end
-
 
 end

@@ -28,13 +28,10 @@ class BookReview::Scraper
 end
 
 
-  def self.scrape_review(book)
-
+  def self.scrape_review(book) #passing in book object
     review_page = Nokogiri::HTML(open(book.url))
 
       doc = review_page.css("div.panel-content-mid-main.panel-panel")
-
-      # binding.pry
 
       doc.each do |review|
 
@@ -50,16 +47,11 @@ end
 
      }
 
-        # attributes[:story] = review.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-what-is-story p").text
-        #
-        # attributes[:parents_need_to_know] = review.css("div.shutter-summary-pane.panel-pane.pane-entity-field.pane-node-field-parents-need-to-know p").text
-        #
-        # attributes[:any_good] = review.css("div.field.field-name-field-any-good.field-type-text-long.field-label-hidden p").text
-        #
-        # attributes[:family_topics] = review.css("div.field.field-name-field-family-topics.field-type-text-long.field-label-hidden p").text
-        #
-
         review = BookReview::Review.new(attributes)
+
+        book.add_review(review)
+
+  binding.pry
 
       end
   end

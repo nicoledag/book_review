@@ -23,15 +23,10 @@ class BookReview::Book
     @@all
   end
 
-  def add_review(review)   #assigns the review to the book then adds the review to the @review array.
-    review.book = self unless review.book  #assigns the current book to the review's 'book' property.  (review belongs to book)
-    #does not assign the book if the review already has an book.
-    @reviews << review unless reviews.include?(review)
-    #adds the review to the current book's 'review' array.
-    #does not add the review if the already exists.
+  def add_review(review)
+    @reviews << review #adds the review to the current book's 'review' array.
+    review.book = self  #assigns the current book to the review's 'book' property.  (review belongs to book)
   end
-
-
 
 
 end
