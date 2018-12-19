@@ -69,7 +69,8 @@ attr_accessor :book
 
 
 
-  def more_info(book)
+  def more_info(book)  #passing in a book object
+  
     puts " "
     puts "Would you like to see the review (Y/N)?".colorize(:red)
 

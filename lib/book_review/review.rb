@@ -7,7 +7,7 @@ class BookReview::Review
   @@all = []
 
   def initialize(att_hash)
-    att_hash.each { |key, value| self.send("#{key}=", value) }
+    att_hash.each { |key, value| self.send("#{key}=", value) }  #Mass Assignment
     self.save
   end
 
