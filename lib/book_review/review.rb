@@ -1,7 +1,8 @@
 require 'pry'
 class BookReview::Review
 
-  attr_accessor :story, :any_good, :parents_need_to_know, :family_topics, :book
+  attr_accessor :story, :any_good, :parents_need_to_know, :family_topics
+  attr_reader :book
 
 
 
