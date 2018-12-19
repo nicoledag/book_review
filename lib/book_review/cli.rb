@@ -15,12 +15,9 @@ attr_accessor :book
     list_books
 
     puts ""
-    puts "Would you like more information about each book?"
-    puts "Please select a book you want more info about by choosing a number 1-50"
+    puts "Please select a book you want more info about by choosing a number 1-50".colorize(:red)
 
     get_book
-
-    more_info(book)
 
   end
 
@@ -53,12 +50,19 @@ attr_accessor :book
 
       more_info(book)
 
+      puts " "
+      puts "Please select a book you want more info about by choosing a number 1-50 or type 'exit' to Exit".colorize(:red)
+      get_book
+
+      # start
+      # list_books_again
+
 
     elsif input == "exit"  #stops method.
 
     else
       puts "Sorry, I didn't understand"
-      get_book
+      get_book  #recursion
     end
 
   end
@@ -66,17 +70,18 @@ attr_accessor :book
 
 
   def more_info(book)
-    puts "Do you want more info (Y/N)?"
+    puts " "
+    puts "Would you like to see the review (Y/N)?".colorize(:red)
 
     input = gets.strip.upcase
 
     until ["Y","N","YES","NO"].include?(input)
-      puts "Please type Y or N"
+      puts "Please type Y or N"  #will prompt if input is not ["Y","N","YES","NO"]
       input = gets.strip.upcase
     end
 
     if input == "Y" || input == "YES"
-      puts "... fetching the reviews \n\n"
+      puts "... fetching the review \n\n"
       BookReview::Scraper.scrape_review(book)
 
       book.reviews.each do |review|
@@ -94,5 +99,28 @@ attr_accessor :book
       puts "Goodbye!"
     end
   end
+
+
+  # def list_books_again
+  #   puts " "
+  #   puts "Would you like to list the books again (Y/N)?".colorize(:red)
+  #
+  #   input = gets.strip.upcase
+  #
+  #   until ["Y","N","YES","NO"].include?(input)
+  #     puts "Please type Y or N"
+  #     input = gets.strip.upcase
+  #   end
+  #
+  #   if input == "Y" || input == "YES"
+  #
+  #     start
+  #
+  #   else
+  #     puts "Goodbye!"
+  #   end
+  # end
+  #
+
 
 end

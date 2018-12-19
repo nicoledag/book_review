@@ -47,9 +47,9 @@ end
 
      }
 
-        review = BookReview::Review.new(attributes)
+        review = BookReview::Review.new(attributes)   #creates a new instance of the review based off above attributes.
 
-        book.add_review(review)
+        book.add_review(review)  #adds the book review to the book class @reviews array.
 
       end
   end
