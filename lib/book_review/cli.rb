@@ -66,7 +66,6 @@ attr_accessor :book
 
 
   def more_info(book)
-
     puts "Do you want more info (Y/N)?"
 
     input = "nil"  #default value
@@ -84,7 +83,6 @@ attr_accessor :book
 
 
   def list_review
-
 
 
   end

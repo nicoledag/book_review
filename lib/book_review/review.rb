@@ -1,24 +1,23 @@
 require 'pry'
 class BookReview::Review
 
-  attr_accessor :story, :any_good, :parents_need_to_know, :family_topics
-  attr_reader :book
+  attr_accessor :story, :any_good, :parents_need_to_know, :family_topics, :book
+  # attr_reader :book
 
 
 
   @@all = []
 
-  def initialize(att_hash, book = nil)
+  def initialize(att_hash)
     att_hash.each { |key, value| self.send("#{key}=", value) }
-    self.artist = artist
     self.save
   end
 
-  def book=(book)  
-      if book!=nil
-      @book = book
-      book.add_review(self)
-  end
+  # def book=(book)
+  #     if book!=nil
+  #     @book = book
+  #     book.add_review(self)
+  # end
 
 
   def save
