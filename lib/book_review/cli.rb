@@ -5,13 +5,10 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
 
 attr_accessor :book
 
-
   def start
     puts "Welcome to the Children's Book Review App!"
     puts "Here are the top 50 books that all kids should read before they are 12 years old:"
     puts ""
-
-
 
     BookReview::Scraper.scrape_book     #scrape all the books - call on the scraper class.
 
@@ -22,7 +19,6 @@ attr_accessor :book
     puts "Please select a book you want more info about by choosing a number 1-50"
 
     get_book
-
 
     more_info(book)
 
@@ -37,7 +33,6 @@ attr_accessor :book
       puts "#{index}: #{book.title}"
     end
   end
-
 
 
   def get_book
@@ -89,6 +84,7 @@ attr_accessor :book
 
 
   def list_review
+
 
 
   end

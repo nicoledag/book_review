@@ -1,11 +1,11 @@
 require 'pry'
 class BookReview::Review
 
-  attr_accessor :story, :any_good, :parents_need_to_know, :family_topics
-  attr_reader :book
+  attr_accessor :story, :any_good, :parents_need_to_know, :family_topics, :book
 
 
-@@all = []
+
+  @@all = []
 
   def initialize(att_hash)
     att_hash.each { |key, value| self.send("#{key}=", value) }
@@ -14,7 +14,7 @@ class BookReview::Review
 
   def book=(book)  #need to re-look at adding to book class
       @book = book
-      Book.add_review(self)
+      book.add_review(self)
   end
 
 
