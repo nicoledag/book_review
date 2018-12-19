@@ -23,14 +23,10 @@ attr_accessor :book
 
     get_book
 
-    BookReview::Scraper.scrape_review(book)
 
+    more_info(book)
 
-    # review_method(book)
-
-    BookReview::Scraper.scrape_review(book)
-
-
+    list_review
 
   end
 
@@ -74,7 +70,8 @@ attr_accessor :book
 
 
 
-  def review_method(book)
+  def more_info(book)
+
     puts "Do you want more info (Y/N)?"
 
     input = "nil"  #default value
@@ -82,17 +79,19 @@ attr_accessor :book
     until input == "Y" || input == "N"
       input = gets.strip.upcase
     end
+
     if input == "y"
       BookReview::Scraper.scrape_review(book)
-
-
-
-
     else
       puts "Goodbye!"
     end
   end
 
+
+  def list_review
+
+
+  end
 
 
 end
