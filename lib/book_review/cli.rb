@@ -6,15 +6,16 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
 attr_accessor :book
 
   def start
-    puts "Welcome to the Children's Book Review App!"
-    puts "Here are the top 50 books that all kids should read before they are 12 years old:"
-    puts ""
+    puts " "
+    puts "Welcome to the Children's Book Review App!".colorize(:red)
+    puts "Here are the top 50 books that all kids should read before they are 12 years old:".colorize(:red)
+    puts " "
 
     BookReview::Scraper.scrape_book     #scrape all the books - call on the scraper class.
 
     list_books
 
-    puts ""
+    puts " "
     puts "Please select a book you want more info about by choosing a number 1-50".colorize(:red)
 
     get_book
@@ -48,16 +49,15 @@ attr_accessor :book
       puts "Review Link:".colorize(:light_blue) + "       #{book.url}"
       puts "Short Description:".colorize(:light_blue) + " #{book.short_desc}"
 
-      more_info(book)
+      more_info(book)  #calls on the more_info(book) method
 
       puts " "
       puts "Please select a book you want more info about by choosing a number 1-50 or type 'exit' to Exit".colorize(:red)
-      get_book
 
-      # start
-      # list_books_again
+      get_book #recursion
 
 
+    #executes below code if index.between?(0, 49) is not met.
     elsif input == "exit"  #stops method.
 
     else
@@ -76,7 +76,7 @@ attr_accessor :book
     input = gets.strip.upcase
 
     until ["Y","N","YES","NO"].include?(input)
-      puts "Please type Y or N"  #will prompt if input is not ["Y","N","YES","NO"]
+      puts "Please type Y or N"  #will prompt if input is not ["Y","N","YES","NO"].  If not program will pass.
       input = gets.strip.upcase
     end
 
@@ -99,28 +99,5 @@ attr_accessor :book
       puts "Goodbye!"
     end
   end
-
-
-  # def list_books_again
-  #   puts " "
-  #   puts "Would you like to list the books again (Y/N)?".colorize(:red)
-  #
-  #   input = gets.strip.upcase
-  #
-  #   until ["Y","N","YES","NO"].include?(input)
-  #     puts "Please type Y or N"
-  #     input = gets.strip.upcase
-  #   end
-  #
-  #   if input == "Y" || input == "YES"
-  #
-  #     start
-  #
-  #   else
-  #     puts "Goodbye!"
-  #   end
-  # end
-  #
-
 
 end
