@@ -33,7 +33,6 @@ attr_accessor :book
     if index.between?(0, 49)
 
       @book = list_books[index]  #I am passing the index to the list_books method.
-
       #needed a instance variable so it could be read in other methods.
 
       puts ""
@@ -63,7 +62,6 @@ attr_accessor :book
 
 
   def more_info(book)  #passing in a book object
-
     puts " "
     puts "Would you like to see the Review (Y/N)?".colorize(:red)
 
@@ -76,7 +74,7 @@ attr_accessor :book
 
     if input == "Y" || input == "YES"
       puts "... fetching the review \n\n"
-      BookReview::Scraper.scrape_review(book)
+      BookReview::Scraper.scrape_review(book) 
 
       book.reviews.each do |review|
         puts "The Story:".colorize(:light_blue)
