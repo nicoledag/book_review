@@ -1,8 +1,6 @@
-require 'pry'
 class BookReview::Review
 
   attr_accessor :book, :story, :any_good, :parents_need_to_know, :family_topics
-
 
   @@all = []
 
@@ -19,6 +17,5 @@ class BookReview::Review
   def self.all
     @@all
   end
-
 
 end

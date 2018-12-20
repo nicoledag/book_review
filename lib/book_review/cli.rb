@@ -1,6 +1,3 @@
-require 'pry'
-require 'colorize'
-
 class BookReview::CLI        #name spacing so it doesn't get confused with soemthing else similiar to it.
 
 attr_accessor :book
@@ -11,7 +8,7 @@ attr_accessor :book
     puts "Here are the top 50 books that all kids should read before they are 12 years old:".colorize(:red)
     puts " "
 
-    BookReview::Scraper.scrape_book     #scrape all the books - call on the scraper class.
+    BookReview::Scraper.scrape_book  #scrape all the books - call on the scraper class.
 
     list_books
 
@@ -19,9 +16,7 @@ attr_accessor :book
     puts "Please select a book you want more info about by choosing a number 1-50".colorize(:red)
 
     get_book
-
   end
-
 
 
   def list_books
@@ -64,15 +59,13 @@ attr_accessor :book
       puts "Sorry, I didn't understand"
       get_book  #recursion
     end
-
   end
 
 
-
   def more_info(book)  #passing in a book object
-  
+
     puts " "
-    puts "Would you like to see the review (Y/N)?".colorize(:red)
+    puts "Would you like to see the Review (Y/N)?".colorize(:red)
 
     input = gets.strip.upcase
 
