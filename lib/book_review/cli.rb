@@ -1,7 +1,5 @@
 class BookReview::CLI        #name spacing so it doesn't get confused with soemthing else similiar to it.
 
-attr_accessor :book
-
   def start
     puts " "
     puts "Welcome to the Children's Book Review App!".colorize(:red)
@@ -32,7 +30,7 @@ attr_accessor :book
 
     if index.between?(0, 49)
 
-      @book = list_books[index]  #I am passing the index to the list_books method.
+      book = list_books[index]  #I am passing the index to the list_books method.
       #needed a instance variable so it could be read in other methods.
 
       puts ""
@@ -74,7 +72,10 @@ attr_accessor :book
 
     if input == "Y" || input == "YES"
       puts "... fetching the review \n\n"
-      BookReview::Scraper.scrape_review(book) 
+
+      if book.reviews == []
+        BookReview::Scraper.scrape_review(book)
+      end
 
       book.reviews.each do |review|
         puts "The Story:".colorize(:light_blue)
