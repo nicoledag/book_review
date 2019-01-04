@@ -26,12 +26,10 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
 
   def get_book
     input = gets.strip
-    index = input.to_i - 1  #converting user input to an integer and subracting 1 to get the index
 
-    if index.between?(0, 49)
+    if input.to_i.between?(1, BookReview::Book.all.size)
 
-      book = list_books[index]  #I am passing the index to the list_books method.
-      #needed a instance variable so it could be read in other methods.
+      book = list_books[input.to_i - 1]  #I am passing the input to the list_books method and converting it to it's index.
 
       puts ""
       puts "-------------------------------------------------".colorize(:red)
@@ -73,8 +71,8 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
     if input == "Y" || input == "YES"
       puts "... fetching the review \n\n"
 
-      if book.reviews == []
-        BookReview::Scraper.scrape_review(book)
+      if book.reviews == []                            #if book.review is equal to an empty array then the reviews will get scraped,
+        BookReview::Scraper.scrape_review(book)       # if not the reviews will be not be scraped and move on to be listed.
       end
 
       book.reviews.each do |review|
