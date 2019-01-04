@@ -25,8 +25,9 @@ class BookReview::CLI        #name spacing so it doesn't get confused with soemt
 
 
   def get_book
-    input = gets.strip
 
+    input = gets.strip
+    
     if input.to_i.between?(1, BookReview::Book.all.size)
 
       book = list_books[input.to_i - 1]  #I am passing the input to the list_books method and converting it to it's index.
